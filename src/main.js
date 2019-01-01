@@ -5,6 +5,8 @@ import App from './App.vue'
 import ToDo from './components/ToDo';
 import Completed from './components/Completed';
 
+import store from './store';
+
 Vue.use(VueRouter);
 
 export const router = new VueRouter({
@@ -18,5 +20,6 @@ export const router = new VueRouter({
 
 new Vue({
   router,
+  store,
   render: h => h(App),
 }).$mount('#app')
