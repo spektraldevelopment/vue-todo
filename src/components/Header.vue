@@ -1,6 +1,6 @@
 <template>
     <header class="header">
-        <h1>Vue ToDo</h1>
+        <h1><img src="../assets/logo.png"/>Vue ToDo</h1>
         <ul>
             <li><router-link to="/">To Do</router-link></li>
             <li><router-link to="/completed">Completed</router-link></li>
@@ -27,6 +27,13 @@ export default {
         width: 100%;
         height: 60px;
         background-color: $header-background;
+
+        img {
+            float: left;
+            width: 10%;
+            height: 10%;
+            margin-right: 10px;
+        }
 
         h1 {
             font-size: 20px;
