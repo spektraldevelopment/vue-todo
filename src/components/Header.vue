@@ -33,6 +33,8 @@ export default {
             width: 10%;
             height: 10%;
             margin-right: 10px;
+            min-width: 30px;
+            min-height: 30px;
         }
 
         h1 {
@@ -48,6 +50,7 @@ export default {
 
             li {
                 margin: 0 10px;
+                white-space: nowrap;
             }
         }
     }
