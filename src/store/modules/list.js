@@ -1,8 +1,5 @@
 const state = {
-    todoItems: [
-        { name: 'Sample Item 1' },
-        { name: 'Sample Item 2' }
-    ],
+    todoItems: [],
     textInput: ""
 };
 
@@ -13,17 +10,35 @@ const getters = {
 
 const actions = {
     //we pack in as much functionality in actions
-    addItem({ commit }) {
-        commit('setItem', { name: state.textInput });
+    addItem({
+        commit
+    }) {
+        commit('setItem', {
+            name: state.textInput,
+            id: Math.random().toString(36).substr(2, 9)
+        });
+        commit('setTextInput', '');
     },
 
-    onTextChange({commit}, text) {
+    onTextChange({
+        commit
+    }, text) {
         commit('setTextInput', text);
     },
-    onInputEnter({commit}, key) {
-        if(key === "Enter") {
-            commit('setItem', { name: state.textInput });
+
+    onInputEnter({
+        dispatch
+    }, key) {
+        if (key === "Enter") {
+            dispatch('addItem');
         }
+    },
+    onItemComplete({
+        commit
+    }, item) {
+
+        const updatedItemsArr = state.todoItems.filter((i) => i.id !== item.id);
+        commit('removeItem', updatedItemsArr);
     }
 
 };
@@ -34,6 +49,9 @@ const mutations = {
     },
     setTextInput: (state, text) => {
         state.textInput = text;
+    },
+    removeItem: (state, items) => {
+        state.todoItems = items;
     }
 };
 

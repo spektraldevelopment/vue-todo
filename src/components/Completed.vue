@@ -1,6 +1,11 @@
 <template>
-    <div>
-        Completed View
+    <div class="todo-list">
+        <ul>
+            <!-- <li v-for="item in getToDoItems" :key="item.id">
+                <span>{{ item.name }}</span>
+                <button @click="onItemComplete(item)">Done</button>
+            </li> -->
+        </ul>
     </div>
 </template>
 
