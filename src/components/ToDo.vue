@@ -1,5 +1,6 @@
 <template>
     <div class="todo">
+        <h1>Things to do</h1>
         <div class="todo-input">
             <input :value="getTextInput" @input="onTextChange($event.target.value)" @keyup="onInputEnter($event.key)"/>
             <button @click="addItem">Add</button>
@@ -33,6 +34,11 @@
 <style lang="scss" scoped>
     .todo {
         width: 100%;
+
+        h1 {
+            display: flex;
+            justify-content: center;
+        }
         
         .todo-input {
             display: flex;
@@ -56,6 +62,7 @@
 
             ul {
                 margin: 0;
+                padding: 0;
             }
 
             button {

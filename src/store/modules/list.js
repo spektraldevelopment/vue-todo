@@ -1,11 +1,14 @@
 const state = {
     todoItems: [],
+    completedItems: [],
     textInput: ""
 };
 
 const getters = {
     getToDoItems: (state) => state.todoItems,
-    getTextInput: (state) => state.textInput
+    getTextInput: (state) => state.textInput,
+    getCompletedItems: (state) => state.completedItems,
+    hasCompletedItems: (state) => state.completedItems.length > 0 ? true : false
 };
 
 const actions = {
@@ -17,6 +20,8 @@ const actions = {
             name: state.textInput,
             id: Math.random().toString(36).substr(2, 9)
         });
+
+        //Clear input field after adding item
         commit('setTextInput', '');
     },
 
@@ -39,6 +44,9 @@ const actions = {
 
         const updatedItemsArr = state.todoItems.filter((i) => i.id !== item.id);
         commit('removeItem', updatedItemsArr);
+        
+        //add completed item to completed list
+        commit('setItemCompleted', item);
     }
 
 };
@@ -52,6 +60,9 @@ const mutations = {
     },
     removeItem: (state, items) => {
         state.todoItems = items;
+    },
+    setItemCompleted: (state, item) => {
+        state.completedItems.unshift(item);
     }
 };
 
